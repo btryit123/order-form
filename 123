@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <title>天麗訂購單</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      padding: 40px;
+    }
+    h2 {
+      text-align: center;
+      color: #003366;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #f0f4ff;
+      color: #003366;
+    }
+    .subtotal-cell {
+      background-color: #f9f9f9;
+      font-weight: bold;
+    }
+    input[type="number"] {
+      width: 80px;
+    }
+    tfoot td {
+      font-weight: bold;
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>天麗訂購單</h2>
+
+  <table id="orderTable">
+    <thead>
+      <tr>
+        <th>品項</th>
+        <th>數量</th>
+        <th>單價 (RM)</th>
+        <th>PV</th>
+        <th>小計 (RM)</th>
+        <th>小計 PV</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 產品項目將由 JavaScript 動態生成 -->
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="1">總計</td>
+        <td id="totalQuantity">0</td>
+        <td></td>
+        <td></td>
+        <td id="totalAmount">0</td>
+        <td id="totalPV">0</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <script>
+    // 產品資料陣列
+    const products = [
+      { name: "A1-深層潔膚油", quantity: 1, price: 315, pv: 1700 },
+      { name: "1-雙效潔顏露", quantity: 1, price: 315, pv: 1700 },
+      { name: "2-平衡柔膚露", quantity: 1, price: 315, pv: 1700 },
+      { name: "3-全效緊緻眼霜", quantity: 1, price: 625, pv: 3500 },
+      { name: "4-煥白精華霜", quantity: 1, price: 655, pv: 3600 },
+      { name: "5-均衡調理霜", quantity: 1, price: 655, pv: 3600 },
+      { name: "6A-亮白防護霜", quantity: 1, price: 625, pv: 3500 },
+      { name: "6B-潤白防護霜", quantity: 0, price: 0, pv: 0 },
+      { name: "8-賦活精華霜", quantity: 0, price: 0, pv: 0 },
+      { name: "9-保濕修復霜", quantity: 3, price: 1140, pv: 5400 },
+      { name: "10-亮麗精純C液", quantity: 0, price: 0, pv: 0 },
+      { name: "12-煥采青春露", quantity: 2, price: 760, pv: 3600 },
+      { name: "BIO雪肌面膜", quantity: 0, price: 0, pv: 0 },
+      { name: "嫩白C粉", quantity: 0, price: 0, pv: 0 },
+      { name: "C粉盒裝", quantity: 0, price: 0, pv: 0 },
+      { name: "Joli青春元素-F", quantity: 0, price: 0, pv: 0 },
+      { name: "Joli亮采元素-L", quantity: 0, price: 0, pv: 0 },
+      { name: "纖麗365", quantity: 0, price: 0, pv: 0 },
+      { name: "纖麗365-S1", quantity: 0, price: 0, pv: 0 },
+      { name: "麗瑞頂級橄欖油", quantity: 0, price: 0, pv: 0 },
+      { name: "天麗紅蔘精華飲", quantity: 0, price: 0, pv: 0 },
+      { name: "麗穩康", quantity: 0, price: 0, pv: 0 },
+      { name: "麗穩膳", quantity: 0, price: 0, pv: 0 },
+      { name: "入會費", quantity: 1, price: 160, pv: 0 },
+      { name: "續約費", quantity: 0, price: 0, pv: 0 }
+    ];
+
+    // 取得表格主體元素
+    const tbody = document.querySelector("#orderTable tbody");
+
+    // 動態生成表格列
+    products.forEach((product, index) => {
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td>${product.name}</td>
+        <td><input type="number" value="${product.quantity}" min="0" class="quantity" data-index="${index}"></td>
+        <td><input type="
+::contentReference[oaicite:10]{index=10}
+ 
