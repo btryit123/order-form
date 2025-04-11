@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>天麗訂購單</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    th {
+      background-color: #d9e1f2;
+      color: #333;
+    }
+    input[type="number"] {
+      width: 60px;
+      padding: 4px;
+      text-align: right;
+    }
+    tfoot td {
+      font-weight: bold;
+      background-color: #f2f2f2;
+    }
+    .item-name {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+<h1>天麗訂購單</h1>
+
+<table id="orderTable">
+  <thead>
+    <tr>
+      <th>品項</th>
+      <th>數量</th>
+      <th>價格 (RM)</th>
+      <th>PV</th>
+      <th>小計金額</th>
+      <th>小計 PV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 商品項目將由 JavaScript 動態生成 -->
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="1">總計</td>
+      <td id="totalQty">0</td>
+      <td></td>
+      <td></td>
+      <td id="totalAmount">0</td>
+      <td id="totalPV">0</td>
+    </tr>
+  </tfoot>
+</table>
+
+<script>
+  // 商品資料陣列
+  const products = [
+    { name: "A1-深層潔膚油", price: 315, pv: 1700 },
+    { name: "1-雙效潔顏露", price: 315, pv: 1700 },
+    { name: "2-平衡柔膚露", price: 315, pv: 1700 },
+    { name: "3-全效緊緻眼霜", price: 625, pv: 3500 },
+    { name: "4-煥白精華霜", price: 655, pv: 3600 },
+    { name: "5-均衡調理霜", price: 655, pv: 3600 },
+    { name: "6A-亮白防護霜", price: 625, pv: 3500 },
+    { name: "6B-潤白防護霜", price: 0, pv: 0 },
+    { name: "8-賦活精華霜", price: 0, pv: 0 },
+    { name: "9-保濕修復霜", price: 380, pv: 1800 },
+    { name: "10-亮麗精純C液", price: 0, pv: 0 },
+    { name: "12-煥采青春露", price: 380, pv: 1800 },
+    { name: "BIO雪肌面膜", price: 0, pv: 0 },
+    { name: "嫩白C粉", price: 0, pv: 0 },
+    { name: "C粉盒裝", price: 0, pv: 0 },
+    { name: "Joli青春元素-F", price: 0, pv: 0 },
+    { name: "Joli亮采元素-L", price: 0, pv: 0 },
+    { name: "纖麗365", price: 0, pv: 0 },
+    { name: "纖麗365-S1", price: 0, pv: 0 },
+    { name: "麗瑞頂級橄欖油", price: 0, pv: 0 },
+    { name: "天麗紅蔘精華飲", price: 0, pv: 0 },
+    { name: "麗穩康", price: 0, pv: 0 },
+    { name: "麗穩膳", price: 0, pv: 0 },
+    { name: "入會費", price: 160, pv: 0 },
+    { name: "續約費", price: 0, pv: 0 }
+  ];
+
+  const tbody = document.querySelector("#orderTable tbody");
+
+  // 建立表格列
+  products.forEach((product, index) => {
+    const row = document.createElement("tr");
+
+    // 品項名稱
+    const nameCell = document.createElement("td");
+    nameCell.textContent = product.name;
+    nameCell.classList.add("item-name");
+    row.appendChild(nameCell);
+
+    // 數量輸入框
+    const qtyCell = document.createElement("td");
+    const qtyInput = document.createElement("input");
+    qtyInput.type = "number";
+    qtyInput.min = "0";
+    qtyInput.value = "0";
+    qtyInput.dataset.index = index;
+    qtyInput.addEventListener("input", updateTotals);
+    qtyCell.appendChild(qtyInput);
+    row.appendChild(qtyCell);
+
+    // 價格
+    const priceCell = document.createElement("td");
+    priceCell.textContent = product.price;
+    row.appendChild(priceCell);
+
+    // PV
+    const pvCell = document.createElement("td");
+    pvCell.textContent = product.pv;
+    row.appendChild(pvCell);
+
+    // 小計金額
+    const subtotalCell = document.createElement("td");
+    subtotalCell.textContent = "0";
+   
+::contentReference[oaicite:8]{index=8}
+ 
